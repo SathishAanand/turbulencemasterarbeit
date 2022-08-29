@@ -1,0 +1,5 @@
+filename,timestep,epochs,batchsize,learningrate,activationfunction,model_accuracy,errorvalues,species
+s10tsep80bs128lr0.0001af3,10,80,128,0.0001,3,100,523,ten
+s3tsep10bs128lr0.01af1,3,10,128,0.01,1,0,8185,three
+s3tsep80bs128lr0.01af3,3,80,128,0.01,3,0,8186,three
+s5tsep10bs256lr0.0001af3,5,10,256,0.0001,3,56,6387,five
