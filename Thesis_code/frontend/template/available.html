@@ -1,0 +1,386 @@
+<!DOCTYPE html lang="en">
+<html class="full-height">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AVAILABLE MODELS</title>
+
+
+    <!-- BootStrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+
+    <!-- css -->
+    <link rel="stylesheet" href="static/stylehome.css">
+
+
+
+</head>
+<style>
+    div.a {
+  text-align: left;
+}
+</style>
+
+<body>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="/">Available models that can be used for this tool </a>
+            </div>
+        </div>
+    </nav>
+    <br>
+    <div class="a">
+    <h5>The hyperparameters that can be chosen are <b>Seqlength</b>, <b>Epochs</b>, <b>Batch Size</b>, <b>Learning Rate</b> and <b>Activation Function</b><br/>
+    <br>
+    The values used for trained models were <br/>
+     <br><br>
+        <ul>
+        <li><b>Seqlength -- 3ts, 5ts, 10ts, 20ts </b></li>
+        <li><b>Epochs -- 10, 20, 40, 80 </b></li> 
+        <li><b>Batch Size -- 128, 256 </b></li>
+        <li><b>Learning Rate -- 0.01, 0.001, 0.0001 </b></li>
+        <li><b>Activation Function -- Relu (1), Sigmoid (2), tanh (3) </b></li>     
+        </ul>
+    
+    <br>
+    Each timestep has 72 unique trained models<br/>
+    <br>
+    The file names are named for easy identification of the configurations. Seqlength --> sXXts, Epochs --> ep, Batch Size --> bs, Learning Rate --> lr and Activation Function --> af<br/>
+    There are total 288 different files available to experiment<br/>
+    For e.g. "turbulence37_s3tsep20bs256lr0.001af3" indicates that it is 7th file with 3 timesteps, 20 epochs, 256 batch size, 0.001 learning rate and tanh activation function <br/>
+    For e.g. "turbulence104_s10tsep10bs128lr0.0001af1" indicates that it is 4th file with 10 timesteps, 10 epochs, 128 batch size, 0.0001 learning rate and Relu activation function<br/>
+    <br>
+    The list of available configurations for 3 ts are below </h5>
+    <h6>
+        <ol>
+            <li>(3, 10, 128, 0.01, 1)</li> 
+            <li>(3, 10, 128, 0.01, 2)</li>
+            <li>(3, 10, 128, 0.01, 3)</li>
+            <li>(3, 10, 128, 0.001, 1)</li>
+            <li>(3, 10, 128, 0.001, 2)</li>
+            <li>(3, 10, 128, 0.001, 3)</li>
+            <li>(3, 10, 128, 0.0001, 1)</li>
+            <li>(3, 10, 128, 0.0001, 2)</li>
+            <li>(3, 10, 128, 0.0001, 3)</li>
+            <li>(3, 10, 256, 0.01, 1)</li>
+            <li>(3, 10, 256, 0.01, 2)</li>
+            <li>(3, 10, 256, 0.01, 3)</li>
+            <li>(3, 10, 256, 0.001, 1)</li>
+            <li>(3, 10, 256, 0.001, 2)</li>
+            <li>(3, 10, 256, 0.001, 3)</li>
+            <li>(3, 10, 256, 0.0001, 1)</li>
+            <li>(3, 10, 256, 0.0001, 2)</li>
+            <li>(3, 10, 256, 0.0001, 3)</li>
+            <li>(3, 20, 128, 0.01, 1)</li>
+            <li>(3, 20, 128, 0.01, 2)</li>
+            <li>(3, 20, 128, 0.01, 3)</li>
+            <li>(3, 20, 128, 0.001, 1)</li>
+            <li>(3, 20, 128, 0.001, 2)</li>
+            <li>(3, 20, 128, 0.001, 3)</li>
+            <li>(3, 20, 128, 0.0001, 1)</li>
+            <li>(3, 20, 128, 0.0001, 2)</li> 
+            <li>(3, 20, 128, 0.0001, 3)</li>
+            <li>(3, 20, 256, 0.01, 1)</li>
+            <li>(3, 20, 256, 0.01, 2)</li>
+            <li>(3, 20, 256, 0.01, 3)</li>
+            <li>(3, 20, 256, 0.001, 1)</li>
+            <li>(3, 20, 256, 0.001, 2)</li>
+            <li>(3, 20, 256, 0.001, 3)</li>
+            <li>(3, 20, 256, 0.0001, 1)</li>
+            <li>(3, 20, 256, 0.0001, 2)</li>
+            <li>(3, 20, 256, 0.0001, 3)</li>
+            <li>(3, 40, 128, 0.01, 1)</li>
+            <li>(3, 40, 128, 0.01, 2)</li>
+            <li>(3, 40, 128, 0.01, 3)</li>
+            <li>(3, 40, 128, 0.001, 1)</li>
+            <li>(3, 40, 128, 0.001, 2)</li>
+            <li>(3, 40, 128, 0.001, 3)</li>
+            <li>(3, 40, 128, 0.0001, 1)</li>
+            <li>(3, 40, 128, 0.0001, 2)</li>
+            <li>(3, 40, 128, 0.0001, 3)</li>
+            <li>(3, 40, 256, 0.01, 1)</li>
+            <li>(3, 40, 256, 0.01, 2)</li>
+            <li>(3, 40, 256, 0.01, 3)</li>
+            <li>(3, 40, 256, 0.001, 1)</li>
+            <li>(3, 40, 256, 0.001, 2)</li>
+            <li>(3, 40, 256, 0.001, 3)</li>
+            <li>(3, 40, 256, 0.0001, 1)</li>
+            <li>(3, 40, 256, 0.0001, 2)</li>
+            <li>(3, 40, 256, 0.0001, 3)</li>
+            <li>(3, 80, 128, 0.01, 1)</li>
+            <li>(3, 80, 128, 0.01, 2)</li> 
+            <li>(3, 80, 128, 0.01, 3)</li>
+            <li>(3, 80, 128, 0.001, 1)</li>
+            <li>(3, 80, 128, 0.001, 2)</li>
+            <li>(3, 80, 128, 0.001, 3)</li>
+            <li>(3, 80, 128, 0.0001, 1)</li>
+            <li>(3, 80, 128, 0.0001, 2)</li>
+            <li>(3, 80, 128, 0.0001, 3)</li>
+            <li>(3, 80, 256, 0.01, 1)</li>
+            <li>(3, 80, 256, 0.01, 2)</li>
+            <li>(3, 80, 256, 0.01, 3)</li>
+            <li>(3, 80, 256, 0.001, 1)</li>
+            <li>(3, 80, 256, 0.001, 2)</li>
+            <li>(3, 80, 256, 0.001, 3)</li>
+            <li>(3, 80, 256, 0.0001, 1)</li>
+            <li>(3, 80, 256, 0.0001, 2)</li>
+            <li>(3, 80, 256, 0.0001, 3)</li>
+        </ol>
+    </h6>
+    
+    <h5>The list of available configurations for 5 ts are below </h5>
+    <h6>
+        <ol>
+            <li>(5, 10, 128, 0.01, 1)</li> 
+            <li>(5, 10, 128, 0.01, 2)</li>
+            <li>(5, 10, 128, 0.01, 3)</li> 
+            <li>(5, 10, 128, 0.001, 1)</li>
+            <li>(5, 10, 128, 0.001, 2)</li>
+            <li>(5, 10, 128, 0.001, 3)</li>
+            <li>(5, 10, 128, 0.0001, 1)</li>
+            <li>(5, 10, 128, 0.0001, 2)</li>
+            <li>(5, 10, 128, 0.0001, 3)</li>
+            <li>(5, 10, 256, 0.01, 1)</li>
+            <li>(5, 10, 256, 0.01, 2)</li>
+            <li>(5, 10, 256, 0.01, 3)</li>
+            <li>(5, 10, 256, 0.001, 1)</li>
+            <li>(5, 10, 256, 0.001, 2)</li>
+            <li>(5, 10, 256, 0.001, 3)</li>
+            <li>(5, 10, 256, 0.0001, 1)</li>
+            <li>(5, 10, 256, 0.0001, 2)</li>
+            <li>(5, 10, 256, 0.0001, 3)</li>
+            <li>(5, 20, 128, 0.01, 1)</li>
+            <li>(5, 20, 128, 0.01, 2)</li>
+            <li>(5, 20, 128, 0.01, 3)</li>
+            <li>(5, 20, 128, 0.001, 1)</li>
+            <li>(5, 20, 128, 0.001, 2)</li>
+            <li>(5, 20, 128, 0.001, 3)</li>
+            <li>(5, 20, 128, 0.0001, 1)</li>
+            <li>(5, 20, 128, 0.0001, 2)</li>
+            <li>(5, 20, 128, 0.0001, 3)</li>
+            <li>(5, 20, 256, 0.01, 1)</li>
+            <li>(5, 20, 256, 0.01, 2)</li>
+            <li>(5, 20, 256, 0.01, 3)</li>
+            <li>(5, 20, 256, 0.001, 1)</li>
+            <li>(5, 20, 256, 0.001, 2)</li>
+            <li>(5, 20, 256, 0.001, 3)</li>
+            <li>(5, 20, 256, 0.0001, 1)</li>
+            <li>(5, 20, 256, 0.0001, 2)</li>
+            <li>(5, 20, 256, 0.0001, 3)</li>
+            <li>(5, 40, 128, 0.01, 1)</li>
+            <li>(5, 40, 128, 0.01, 2)</li>
+            <li>(5, 40, 128, 0.01, 3)</li>
+            <li>(5, 40, 128, 0.001, 1)</li>
+            <li>(5, 40, 128, 0.001, 2)</li>
+            <li>(5, 40, 128, 0.001, 3)</li>
+            <li>(5, 40, 128, 0.0001, 1)</li>
+            <li>(5, 40, 128, 0.0001, 2)</li>
+            <li>(5, 40, 128, 0.0001, 3)</li>
+            <li>(5, 40, 256, 0.01, 1)</li>
+            <li>(5, 40, 256, 0.01, 2)</li>
+            <li>(5, 40, 256, 0.01, 3)</li>
+            <li>(5, 40, 256, 0.001, 1)</li>
+            <li>(5, 40, 256, 0.001, 2)</li>
+            <li>(5, 40, 256, 0.001, 3)</li>
+            <li>(5, 40, 256, 0.0001, 1)</li>
+            <li>(5, 40, 256, 0.0001, 2)</li>
+            <li>(5, 40, 256, 0.0001, 3)</li>
+            <li>(5, 80, 128, 0.01, 1)</li>
+            <li>(5, 80, 128, 0.01, 2)</li>
+            <li>(5, 80, 128, 0.01, 3)</li>
+            <li>(5, 80, 128, 0.001, 1)</li>
+            <li>(5, 80, 128, 0.001, 2)</li>
+            <li>(5, 80, 128, 0.001, 3)</li>
+            <li>(5, 80, 128, 0.0001, 1)</li>
+            <li>(5, 80, 128, 0.0001, 2)</li>
+            <li>(5, 80, 128, 0.0001, 3)</li>
+            <li>(5, 80, 256, 0.01, 1)</li>
+            <li>(5, 80, 256, 0.01, 2)</li>
+            <li>(5, 80, 256, 0.01, 3)</li>
+            <li>(5, 80, 256, 0.001, 1)</li>
+            <li>(5, 80, 256, 0.001, 2)</li>
+            <li>(5, 80, 256, 0.001, 3)</li>
+            <li>(5, 80, 256, 0.0001, 1)</li>
+            <li>(5, 80, 256, 0.0001, 2)</li>
+            <li>(5, 80, 256, 0.0001, 3)</li>
+        </ol>
+    </h6>
+    <h5>The list of available configurations for 10 ts are below </h5>
+    <h6>
+        <ol>    
+            <li>(10, 10, 128, 0.01, 1)</li>
+            <li>(10, 10, 128, 0.01, 2)</li>
+            <li>(10, 10, 128, 0.01, 3)</li>
+            <li>(10, 10, 128, 0.001, 1)</li>
+            <li>(10, 10, 128, 0.001, 2)</li>
+            <li>(10, 10, 128, 0.001, 3)</li>
+            <li>(10, 10, 128, 0.0001, 1)</li>
+            <li>(10, 10, 128, 0.0001, 2)</li> 
+            <li>(10, 10, 128, 0.0001, 3)</li>
+            <li>(10, 10, 256, 0.01, 1)</li>
+            <li>(10, 10, 256, 0.01, 2)</li>
+            <li>(10, 10, 256, 0.01, 2)</li>
+            <li>(10, 10, 256, 0.01, 3)</li>
+            <li>(10, 10, 256, 0.001, 1)</li>
+            <li>(10, 10, 256, 0.001, 2)</li>
+            <li>(10, 10, 256, 0.001, 3)</li>
+            <li>(10, 10, 256, 0.0001, 1)</li>
+            <li>(10, 10, 256, 0.0001, 2)</li>
+            <li>(10, 10, 256, 0.0001, 3)</li>
+            <li>(10, 20, 128, 0.01, 1)</li>
+            <li>(10, 20, 128, 0.01, 2)</li>
+            <li>(10, 20, 128, 0.01, 3)</li>
+            <li>(10, 20, 128, 0.001, 1)</li>
+            <li>(10, 20, 128, 0.001, 2)</li>
+            <li>(10, 20, 128, 0.001, 3)</li>
+            <li>(10, 20, 128, 0.0001, 1)</li>
+            <li>(10, 20, 128, 0.0001, 2)</li>
+            <li>(10, 20, 128, 0.0001, 3)</li>
+            <li>(10, 20, 256, 0.01, 1)</li>
+            <li>(10, 20, 256, 0.01, 2)</li>
+            <li>(10, 20, 256, 0.01, 3)</li>
+            <li>(10, 20, 256, 0.001, 1)</li>
+            <li>(10, 20, 256, 0.001, 2)</li>
+            <li>(10, 20, 256,0.001, 3)</li>
+            <li>(10, 20, 256, 0.0001, 1)</li>
+            <li>(10, 20, 256, 0.0001, 2)</li>
+            <li>(10, 20, 256, 0.0001, 3)</li>
+            <li>(10, 40, 128, 0.01, 1)</li>
+            <li>(10, 40, 128, 0.01, 2)</li>
+            <li>(10, 40, 128, 0.01, 3)</li>
+            <li>(10, 40, 128, 0.001, 1)</li>
+            <li>(10, 40, 128, 0.001, 2)</li>
+            <li>(10, 40, 128, 0.001, 3)</li>
+            <li>(10, 40, 128, 0.0001, 1)</li>
+            <li>(10, 40, 128, 0.0001, 2)</li>
+            <li>(10, 40, 128, 0.0001, 3)</li>
+            <li>(10, 40, 256, 0.01, 1)</li>
+            <li>(10, 40, 256, 0.01, 2)</li>
+            <li>(10, 40, 256, 0.01, 3)</li>
+            <li>(10, 40, 256, 0.001, 1)</li>
+            <li>(10, 40, 256, 0.001, 2)</li>
+            <li>(10, 40, 256, 0.001, 3)</li>
+            <li>(10, 40, 256, 0.0001, 1)</li>
+            <li>(10, 40, 256, 0.0001, 2)</li>
+            <li>(10, 40, 256, 0.0001, 3)</li>
+            <li>(10, 80, 128, 0.01, 1)</li>
+            <li>(10, 80, 128, 0.01, 2)</li>
+            <li>(10, 80, 128, 0.01, 3)</li>
+            <li>(10, 80, 128, 0.001, 1)</li>
+            <li>(10, 80, 128, 0.001, 2)</li>
+            <li>(10, 80, 128, 0.001, 3)</li>
+            <li>(10, 80, 128, 0.0001, 1)</li>
+            <li>(10, 80, 128, 0.0001, 2)</li>
+            <li>(10, 80, 128, 0.0001, 3)</li>
+            <li>(10, 80, 256, 0.01, 1)</li>
+            <li>(10, 80, 256, 0.01, 2)</li>
+            <li>(10, 80, 256, 0.01, 3)</li>
+            <li>(10, 80, 256, 0.001, 1)</li>
+            <li>(10, 80, 256, 0.001, 2)</li>
+            <li>(10, 80, 256, 0.001, 3)</li>
+            <li>(10, 80, 256, 0.0001, 1)</li>
+            <li>(10, 80, 256, 0.0001, 2)</li>
+            <li>(10, 80, 256, 0.0001, 3)</li>
+            </ol>
+    </h6>
+    <h5>The list of available configurations for 20 ts are below </h5>
+    <h6> 
+        <ol>        
+            <li>(20, 10, 128, 0.01, 1)</li>
+            <li>(20, 10, 128, 0.01, 2)</li>
+            <li>(20, 10, 128, 0.01, 3)</li>
+            <li>(20, 10, 128, 0.001, 1)</li>
+            <li>(20, 10, 128, 0.001, 2)</li>
+            <li>(20, 10, 128, 0.001, 3)</li>
+            <li>(20, 10, 128, 0.0001, 1)</li>
+            <li>(20, 10, 128, 0.0001, 2)</li>
+            <li>(20, 10, 128, 0.0001, 3)</li>
+            <li>(20, 10, 256, 0.01, 1)</li>
+            <li>(20, 10, 256, 0.01, 2)</li>
+            <li>(20, 10, 256, 0.01, 3)</li>
+            <li>(20, 10, 256, 0.001, 1)</li>
+            <li>(20, 10, 256, 0.001, 2)</li>
+            <li>(20, 10, 256, 0.001, 3)</li>
+            <li>(20, 10, 256, 0.0001, 1)</li>
+            <li>(20, 10, 256, 0.0001, 2)</li>
+            <li>(20, 10, 256, 0.0001, 3)</li>
+            <li>(20, 20, 128, 0.01, 1)</li>
+            <li>(20, 20, 128, 0.01, 2)</li>
+            <li>(20, 20, 128, 0.01, 3)</li>
+            <li>(20, 20, 128, 0.001, 1)</li>
+            <li>(20, 20, 128, 0.001, 2)</li>
+            <li>(20, 20, 128, 0.001, 3)</li>
+            <li>(20, 20, 128, 0.0001, 1)</li>
+            <li>(20, 20, 128, 0.0001, 2)</li>
+            <li>(20, 20, 128, 0.0001, 3)</li>
+            <li>(20, 20, 256, 0.01, 1)</li>
+            <li>(20, 20, 256, 0.01, 2)</li>
+            <li>(20, 20, 256, 0.01, 3)</li>
+            <li>(20, 20, 256, 0.001, 1)</li>
+            <li>(20, 20, 256, 0.001, 2)</li>
+            <li>(20, 20, 256, 0.001, 3)</li>
+            <li>(20, 20, 256, 0.0001, 1)</li>
+            <li>(20, 20, 256, 0.0001, 2)</li>
+            <li>(20, 20, 256, 0.0001, 3)</li>
+            <li>(20, 40, 128, 0.01, 1)</li>
+            <li>(20, 40, 128, 0.01, 2)</li>
+            <li>(20, 40, 128, 0.01, 3)</li>
+            <li>(20, 40, 128, 0.001, 1)</li>
+            <li>(20, 40, 128, 0.001, 2)</li>
+            <li>(20, 40, 128, 0.001, 3)</li>
+            <li>(20, 40, 128, 0.0001, 1)</li> 
+            <li>(20, 40, 128, 0.0001, 2)</li>
+            <li>(20, 40, 128, 0.0001, 3)</li>
+            <li>(20, 40, 256, 0.01, 1)</li>
+            <li>(20, 40, 256, 0.01, 2)</li>
+            <li>(20, 40, 256, 0.01, 3)</li>
+            <li>(20, 40, 256, 0.001, 1)</li>
+            <li>(20, 40, 256, 0.001, 2)</li>
+            <li>(20, 40, 256, 0.001, 3)</li>
+            <li>(20, 40, 256, 0.0001, 1)</li>
+            <li>(20, 40, 256, 0.0001, 2)</li>
+            <li>(20, 40, 256, 0.0001, 3)</li>
+            <li>(20, 80, 128, 0.01, 1)</li>
+            <li>(20, 80, 128, 0.01, 2)</li>
+            <li>(20, 80, 128, 0.01, 3)</li>
+            <li>(20, 80, 128, 0.001, 1)</li>
+            <li>(20, 80, 128, 0.001, 2)</li>
+            <li>(20, 80, 128, 0.001, 3)</li>
+            <li>(20, 80, 128, 0.0001, 1)</li>
+            <li>(20, 80, 128, 0.0001, 2)</li>
+            <li>(20, 80, 128, 0.0001, 3)</li>
+            <li>(20, 80, 256, 0.01, 1)</li>
+            <li>(20, 80, 256, 0.01, 2)</li>
+            <li>(20, 80, 256, 0.01, 3)</li>
+            <li>(20, 80, 256, 0.001, 1)</li>
+            <li>(20, 80, 256, 0.001, 2)</li>
+            <li>(20, 80, 256, 0.001, 3)</li>
+            <li>(20, 80, 256, 0.0001, 1)</li>
+            <li>(20, 80, 256, 0.0001, 2)</li>
+            <li>(20, 80, 256, 0.0001, 3)</li>
+        </ol>
+    </h6>
+    <h5>tSNE Projections </h5>
+    <h6>The colorful dots in the tsne projections represents the timesteps. Based on the no.of.timesteps which have been selected, you can find the no.of.dots. For instance, if you have selected 3 timestep
+        input, you will find 3 dots<br/>
+        The lines in the tsne projections represents the line(edge) between two timesteps. d3.interpolateRdYlGn is used as color coding for the lines.</h6>
+    <h5>Dimensionality Reductions </h5>
+    <h6>There are 3 dimesnionality reduction techniques in which the data cn be visualised </h6>
+    <h6> 
+        <ol>        
+            <li>tSNE</li>
+            <li>PCA</li>
+            <li>UMAP</li>
+        </ol>
+    </h6>
+    <h5>K-Means Clustering </h5>
+    <h6>K-means clustering algortihm was implemented and by selecting the respective cluster checkboxes and the cluster button, the projection for the respective data can be visualised </h6>
+    <h5>Animation & Scatterpoints </h5>
+    <h6>By checking the animate and scatterpoints checkboxes and clcicking the buttons, the data can be visualised in animation and scatterpoints. d3.interpolateRainbow is used as color coding for scatterpoints.</h6>
+    </div> 
+</body>
+</html>

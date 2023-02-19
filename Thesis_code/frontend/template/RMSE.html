@@ -1,0 +1,63 @@
+<!DOCTYPE html lang="en">
+<html class="full-height">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RMSE error values</title>
+
+    <!-- BootStrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+    <!-- css -->
+    <link rel="stylesheet" href="static/stylehome.css">
+    <script src="https://www.kryogenix.org/code/browser/sorttable/sorttable.js"></script>
+
+
+</head>
+<style>
+    table, th, td {
+      border: 1px solid black;
+      border-collapse: collapse;
+    }
+
+    .sortable {
+  margin-left: auto;
+  margin-right: auto;
+}
+    </style>
+
+<body>
+  <h4>This table shows the trained models with their hyperparameter values</h4>
+  <br>
+  <br>
+  <br>
+  <h5>Activation fucntions: 1 - Relu , 2 - Sigmoid , 3 - Hyperbolic Tangent (tanh)</h4>
+  <br>
+  <table id="demo" class="sortable">
+      <thead>
+          <tr>
+            <th>Filename</th>
+            <th>Input Timesteps</th>
+            <th>No.of.Epochs</th>
+            <th>Batch size</th>
+            <th>Learning Rate</th>
+            <th>Activation Functions</th>
+            <th>Model Accuracy</th>
+            <th>RMSE error values</th>
+            <th>Variety for color</th>
+          </tr>
+      </thead>
+      <tbody>
+      {% for row in csv %}
+        <tr>
+        {% for col in row.split(",") %}
+        <td>{{ col }}</td>
+        {% endfor %}
+        </tr>
+      {% endfor %}
+      </tbody>
+  </table>
+</body>
+</html>

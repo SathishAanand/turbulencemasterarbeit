@@ -1,0 +1,88 @@
+<!DOCTYPE html lang="en">
+<html class="full-height">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZEROTH HIDDEN STATES</title>
+    <link rel='stylesheet' href="{{ url_for('static', filename='styles.css') }}"/>
+    <script type="text/javascript" src="static/d3.min.js"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='zeroth1.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='mainviztable.js') }}"></script>
+</head>
+
+<body class="height99" onload="init()">
+
+    <button class="openbtn" onclick="openNav()" id="settingsButton">☰ Settings</button>
+    <script>
+        function openNav() {
+            document.getElementById("mySidebar").style.width = "auto";
+            document.getElementById("mySidebar").style.overflow = "visible";
+            document.getElementById("settingsButton").style.visibility = "hidden";
+            updatePlots();
+        }
+        function closeNav() {
+            document.getElementById("mySidebar").style.width = "0";
+            document.getElementById("mySidebar").style.overflow = "hidden";
+            document.getElementById("settingsButton").style.visibility = "visible";
+            updatePlots();
+        }
+    </script>
+    <div id="mySidebar" class="sidebar itemLevel0">
+        <div class="menu">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&#x2B9E;</a>
+            <section class="menuBox">
+                <input class="collapseCheckbox" type="checkbox" name="collapse0" id="handle0" style="display:none" checked="checked" >
+                <h2 class="handle">
+                <label for="handle0">Input Data</label>
+                </h2>
+                <div class="content formMainContainer">
+                    <div class="content formContainer" style="padding: 2px">
+                    <select class="item60" name="datasets">
+                        {% for value in datasets %}
+                        <option value="{{ value }}">{{ value }}
+                        </option>
+                        {% endfor %}
+                    </select>
+                    <button class="item40" onclick="loadData()">Load Dataset</button>
+                    </div>
+                </div>
+            </section>
+            <section class="menuBox">
+                <input class="collapseCheckbox" type="checkbox" name="collapse3" id="handle3" style="display:none" >
+                <h2 class="handle">
+                <label for="handle3">Sequences</label>
+                </h2>
+                <div class="content">
+                    <div id="page-wrap" class="scrollArea">
+                    </div>
+                </div>
+            </section>
+            <section class="menuBox">
+                <input class="collapseCheckbox" type="checkbox" name="collapse3" id="handle3" style="display:none" >
+                <h2 class="handle">
+                <label for="handle3"> Including Zeroth Hidden States</label>
+                </h2>
+                <div class="content formContainer">
+                    <label class="item50">
+                    <input type="checkbox" id="zeroth" value="zeroth">
+                    Zero th Hidden state
+                    </label>
+                    <button class="item40" onclick="loadscatter()" id="btn">Do scatter</button>
+                    <label class="item50">
+                    <input type="checkbox" name="scatterpoints" id="scatterpoints" value="scatterpoints">
+                    Scatterpoints
+                    </label>  
+                </div>
+            </section>
+        </div>
+    </div>
+    <div class=" app containerLevel0  mainContainer full-height height99">
+        <div id="projectionTitle" class="diagramTitle">
+            Zeroth Hidden state projection
+        </div>
+        <!--svg id="tsne"  width="100%" height="100%"></svg-->
+        <svg id="tsne"  ViewBox="0 0 200 200" width="100%" height="100%"></svg>
+    </div>
+</body>
+</html>

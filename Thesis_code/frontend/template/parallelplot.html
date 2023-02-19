@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+
+<script src="https://d3js.org/d3.v6.js"></script>
+
+<body>
+  <h3 align="center">Overall error value comparison for hyperparameter configurations</h3>
+  <div class="top" id="my_dataviz"></div>
+  <br/>
+  <br/>
+  <br/>
+</body>
+
+<script>
+
+  var margin = {top: 30, right: 50, bottom: 10, left: 400},
+    width = 1260 - margin.left - margin.right,
+    height = 600 - margin.top - margin.bottom;
+  
+  const svg = d3.select("#my_dataviz")
+  .append("svg")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+  .append("g")
+    .attr("transform",
+          `translate(${margin.left},${margin.top})`);
+  
+  d3.csv("https://raw.githubusercontent.com/SathishAanand/turbulencemasterarbeit/master/parallel4.csv").then( function(data) {
+    
+    const color = d3.scaleOrdinal()
+      .domain(['three', 'five', 'ten' ,'twenty'])
+      .range([ "#440154ff", "#21908dff", "#009900","#ff0000"])
+  
+    console.log(color)
+    
+    dimensions = ["timestep","epochs","batchsize" , "learningrate","activationfunction","errorvalues","model_accuracy"]
+  
+    const y = {}
+    for (i in dimensions) {
+      name = dimensions[i]
+      y[name] = d3.scaleLinear()
+        .domain( d3.extent(data, function(d) { return +d[name]; }) )
+        .range([height, 0])
+    }
+  
+    x = d3.scalePoint()
+      .range([0, width])
+      .domain(dimensions);
+  
+    const highlight = function(event, d){
+  
+      selected_specie = d.variety
+  
+      d3.selectAll(".line")
+        .transition().duration(200)
+        .style("stroke", "lightgrey")
+        .style("opacity", "0.2")
+    
+      d3.selectAll("." + selected_specie)
+        .transition().duration(200)
+        .style("stroke", color(selected_specie))
+        .style("opacity", "1")
+    }
+  
+    const doNotHighlight = function(event, d){
+      d3.selectAll(".line")
+        .transition().duration(200).delay(1000)
+        .style("stroke", function(d){ return( color(d.variety))} )
+        .style("opacity", "1")
+    }
+  
+    function path(d) {
+        return d3.line()(dimensions.map(function(p) { return [x(p), y[p](d[p])]; }));
+    }
+
+    svg
+      .selectAll("myPath")
+      .data(data)
+      .join("path")
+        .attr("class", function (d) { return "line " + d.variety } ) 
+        .attr("d",  path)
+        .style("fill", "none" )
+        .style("stroke", function(d){ return( color(d.variety))} )
+        .style("opacity", 0.5)
+        .on("mouseover", highlight)
+        .on("mouseleave", doNotHighlight )
+  
+    
+    svg.selectAll("myAxis")
+      
+      .data(dimensions).enter()
+      .append("g")
+      .attr("class", "axis")
+      .attr("transform", function(d) { return `translate(${x(d)})`})
+      .each(function(d) { d3.select(this).call(d3.axisLeft().ticks(5).scale(y[d])); })
+      .append("text")
+        .style("text-anchor", "middle")
+        .attr("y", -9)
+        .text(function(d) { return d; })
+        .style("fill", "black")
+  
+  })
+</script>

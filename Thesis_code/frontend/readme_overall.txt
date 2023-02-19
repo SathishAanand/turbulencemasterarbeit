@@ -1,0 +1,3 @@
+The overall python file has the logic for reading all the json files and extract the five hypeparameter values such as 
+timesteps, epochs, batch size, learning rate, and activation function. It also sums up the individual RMSE errors and provide the final RMSE error value for all the inputs samples. All these information are saved in .csv format from wher the 
+parallelplot.html file reads and renders the parallel coordinates plot.

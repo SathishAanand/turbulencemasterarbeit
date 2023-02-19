@@ -1,0 +1,214 @@
+<!DOCTYPE html lang="en">
+<html class="full-height">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TURBULENCE DATA</title>
+
+
+    <!-- BootStrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+
+    <!-- css -->
+    <link rel="stylesheet" href="static/stylehome.css">
+
+
+</head>
+
+<body>
+
+    <!-- Heading -->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="/">TURBULENCE DATA</a>
+            </div>
+        </div>
+    </nav>
+    <br>
+    <br>
+    <br>
+    <div class="container">
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Model</h5>
+                    <!-- Model -->
+                    <select name="model" id="model" required="required">
+                        <option value="RNN">RNN</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    <br>
+    <br>
+    <br>
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Timesteps</h5>
+                    <!-- batch size -->
+                    <select name="ts" id="ts" placeholder ="Select 3,5,10,20"
+                            required="required">
+                            <option value="3">3</option>
+                            <option value="5">5</option> 
+                            <option value="10">10</option>
+                            <option value="20">20</option>      
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-body">
+                    <!-- Epochs -->
+                    <h5 class="card-title">Epochs</h5>
+                    <select name="epochs"  id="epochs" placeholder ="Select between 10 to 80"
+                    required="required">
+                    <option value="10">10</option>
+                    <option value="20">20</option> 
+                    <option value="40">40</option>
+                    <option value="80">80</option>      
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Batch Size</h5>
+                    <!-- batch size -->
+                    <select name="bs"  id="bs" placeholder ="Select either 128, 256"
+                    required="required">
+                    <option value="128">128</option>
+                    <option value="256">256</option>       
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Learning Rate</h5>
+                    <!-- Learning rate -->
+                    <select name="lr" id="lr" required="required">
+                        <option value="0.01">0.01</option>
+                        <!--option value="0.01">0.01</option-->
+                        <option value="0.001">0.001</option>
+                        <option value="0.0001">0.0001</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Activation function</h5>
+                    <!--validtion split  -->
+                    <select name="af" id="af" required="required">
+                        <option value="Relu">Relu(1)</option>
+                        <option value="Sigmoid">Sigmoid(2)</option>
+                        <option value="tanh">tanh(3)</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <!-- Save button -->
+    <input type="button" id="bt" value="Save" class="btn btn-secondary" onclick="saveFile()">
+    <br>
+    <br>
+    <input type="button" id="bt1" value="Submit to see file name" class="btn btn-secondary" onclick="displayFile()" >
+    <br>
+    <br>
+    <br>
+    <span id="resulto"></span>
+    <br>
+    <br>
+    <br>
+    <br>
+    <a href=next  target="_blank"><button >Hidden States</button></a>
+    <a href=available  target="_blank"><button >Available Models</button></a>
+    <a href=comparison  target="_blank"><button >Comparison of Models</button></a>
+    <a href=zerohidden  target="_blank"><button >Zeroth Hidden states</button></a>
+    <a href=overall  target="_blank"><button >Overall Error value comparison</button></a>
+    <a href=errortable  target="_blank"><button >Summary Table</button></a>
+    <br>
+    <br>
+    </div>
+</body>
+<script>  
+    let displayFile=()=>{
+        const timesteps = document.getElementById('ts').value; 
+        const epochs = document.getElementById('epochs').value;
+        const batchsize = document.getElementById('bs').value;
+        const learningrate = document.getElementById('lr').value;
+        const activationfunction = document.getElementById('af').value;
+
+        if(activationfunction=="Relu"){
+        var result= "Your file name is turbulence" + timesteps + "XX" + "_" + "s" + timesteps + "ts" + "ep" + epochs +"bs" + batchsize + "lr" + learningrate + "af" + "1";}
+        if(activationfunction=="Sigmoid"){
+        var result= "Your file name is turbulence" + timesteps + "XX" + "_" + "s" + timesteps + "ts" + "ep" + epochs +"bs" + batchsize + "lr" + learningrate + "af" + "2";}
+        if(activationfunction=="tanh"){
+        var result= "Your file name is turbulence" + timesteps + "XX" + "_" + "s" + timesteps + "ts" + "ep" + epochs +"bs" + batchsize + "lr" + learningrate + "af" + "3";}
+        document.getElementById('resulto').textContent=result
+
+    };       
+    let saveFile = () => {
+        // Get the data from each element on the form.
+    	const model = document.getElementById('model');
+        const epochs = document.getElementById('epochs');
+        const batchsize = document.getElementById('bs');
+        const learningrate = document.getElementById('lr');
+        const activationfunction = document.getElementById('af');
+        const timesteps = document.getElementById('ts');
+        
+        // This variable stores all the data.
+        const data = {
+            "Model" :  model.value, 
+            "Epochs":  epochs.value, 
+            "Batch Size":  batchsize.value , 
+            "Learning Rate":  learningrate.value ,
+            "Activation Fucntion":  activationfunction.value,
+            "Timesteps":  timesteps.value
+        };
+        const datas = JSON.stringify(data);
+        // Convert the text to BLOB.
+        const textToBLOB = new Blob([datas], { type: 'text/json' });
+        const sFileName = 'user.json';	   // The file to save the data.
+
+        let newLink = document.createElement("a");
+        newLink.download = sFileName;
+
+        if (window.webkitURL != null) {
+            newLink.href = window.webkitURL.createObjectURL(textToBLOB);
+        }
+        else {
+            newLink.href = window.URL.createObjectURL(textToBLOB);
+            newLink.style.display = "none";
+            document.body.appendChild(newLink);
+        }
+        newLink.click(); 
+    }
+</script>
+</html>

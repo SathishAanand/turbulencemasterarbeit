@@ -1,0 +1,256 @@
+<!DOCTYPE html lang="en">
+<html class="full-height">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HIDDEN STATES</title>
+    <link rel='stylesheet' href="{{ url_for('static', filename='styles.css') }}"/>
+    <!--script type="text/javascript" src="static/d3/d3.min.js"></script-->
+    <script type="text/javascript" src="static/d3.min.js"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='maininputanimation1.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='mainviztable.js') }}"></script>
+</head>
+
+<body class="height99" onload="init()">
+    <div class="   full-height">
+        <div class="leftItem" id="dataInfoContainer" style="display:none">
+            <div id="dataInfoTile" class="diagramTitle">
+                Dataset
+            </div>
+            <table style="width:100%">
+                <tr>
+                    <td>Test Set Accuracy</td>
+                    <td id="dataInfoAcc"></td>
+                </tr>
+                <tr>
+                    <td>#Sequences</td>
+                    <td id="dataInfoSeqs"></td>
+                </tr>
+                <tr>
+                    <td>Timesteps</td>
+                    <td id="dataInfots"></td>
+                </tr>
+                <tr>
+                    <td>Time increment b/w files</td>
+                    <td id="dataInfoinc"></td>
+                </tr>
+                <tr>
+                    <td># Features</td>
+                    <td id="datanfeatures"></td>
+                </tr>
+            </table>
+        </div>
+        <div  class="leftItem" id="sequenceContainer"  min-height="70%">
+            <div id="sequenceTitle" class="diagramTitle" style="display:none">
+                Current Sequence
+            </div>   
+        </div>
+        <div id="dataInfoTile" class="diagramTitle">
+            Heat Map
+        </div>
+        
+        <svg id="mainSvg"  width="100%" height="60%"></svg>
+    </div >
+    <div class=" app containerLevel0  mainContainer full-height height99">
+        <div id="projectionTitle" class="diagramTitle">
+            Projection of Hidden States of GRU Layer
+        </div>
+        <!--svg id="tsne"  width="100%" height="100%"></svg-->
+        
+        <svg id="tsne" ViewBox="60 60 200 200" width="100%" height="100%" ></svg>
+        <!--<svg ViewBox="0 0 1350 800"  ViewBox="60 60 200 200" id="mainSvg" width="90%" height="100%" width="100%" height="100%"
+            proper viewbox for tsne= 60 60 200 200 with width and height =100%
+            proper viewbox for umap= 30 80 150 100, 70 80 130 80 without width and height =100%
+            proper viewbox for pca= 150 100 1 50, 120 120 5 15 without width and height =100%
+            >
+        
+        </svg>-->
+        <!--<svg  ViewBox="0 0 1350 800"  id="mainSvg1" width="90%" height="80%">
+            
+        </svg>-->
+        <div id="question"></div>
+
+        <button class="openbtn" onclick="openNav()" id="settingsButton">☰ Settings</button>
+        <script>
+            function openNav() {
+                document.getElementById("mySidebar").style.width = "auto";
+                document.getElementById("mySidebar").style.overflow = "visible";
+                document.getElementById("settingsButton").style.visibility = "hidden";
+                updatePlots();
+            }
+            function closeNav() {
+                document.getElementById("mySidebar").style.width = "0";
+                document.getElementById("mySidebar").style.overflow = "hidden";
+                document.getElementById("settingsButton").style.visibility = "visible";
+                updatePlots();
+            }
+        </script>
+    </div>
+
+    <div id="mySidebar" class="sidebar itemLevel0 full-height rightContainer">
+        <div class="menu rightItem">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&#x2B9E;</a>
+            <section class="menuBox">
+                <input class="collapseCheckbox" type="checkbox" name="collapse0" id="handle0" style="display:none" checked="checked" >
+                <h2 class="handle">
+                <label for="handle0">Input Data</label>
+                </h2>
+                <div class="content formMainContainer">
+                <div class="content formContainer" style="padding: 2px">
+                    <select class="item60" name="datasets">
+                        {% for value in datasets %}
+                        <option value="{{ value }}">{{ value }}
+                        </option>
+                        {% endfor %}
+                    </select>
+                    <button class="item40" onclick="loadData()">Load Dataset</button>
+                    </div>
+                </div>
+            </section>
+            <section class="menuBox">
+                <input class="collapseCheckbox" type="checkbox" name="collapse3" id="handle3" style="display:none" >
+                <h2 class="handle">
+                    <label for="handle3">Sequences</label>
+                </h2>
+                <div class="content">
+                    <div id="page-wrap" class="scrollArea">
+                    </div>
+                </div>
+            </section>
+            <section class="menuBox">
+                <input class="collapseCheckbox" type="checkbox" name="collapse3" id="handle3" style="display:none" >
+                <h2 class="handle">
+                    <label for="handle3">Dimensionality Reductions</label>
+                </h2>
+                <div class="content formContainer">
+                    <label class="item50">
+                        <input type="checkbox" id="Tsne" value="tsne">
+                        tSNE
+                    </label>
+                    <label class="item50">
+                        <input type="checkbox" id="pca" value="pca">
+                    PCA
+                    </label>
+                    <label class="item50">
+                        <input type="checkbox" id="umap" value="umap">
+                        UMAP
+                    </label>
+                    <!--label class="item50">
+                        <input type="checkbox" id="mds" value="mds">
+                        MDS
+                    </label-->
+                </div>
+                <h2 class="handle">
+                    <label for="handle3">K-means Clustering </label>
+                </h2>
+                <div class="content formContainer">
+                    <button class="item40" onclick="loadcluster()" id="btn1">Cluster</button>
+                    <label class="item10">
+                        <input type="checkbox" name="clus" id="cluster0" value="c0">
+                        Cluster 0
+                    </label>
+                    <label class="item10">
+                        <input type="checkbox" name="clus" id="cluster1" value="c1">
+                        Cluster 1
+                    </label>
+                    <label class="item10">
+                        <input type="checkbox" name="clus" id="cluster2" value="c2">
+                        Cluster 2
+                    </label>
+                    <label class="item10">
+                        <input type="checkbox" name="clus" id="cluster3" value="c3">
+                        Cluster 3
+                    </label>
+                    <label class="item10">
+                        <input type="checkbox" name="clus" id="cluster4" value="c4">
+                        Cluster 4
+                    </label>
+                    <label class="item10">
+                        <input type="checkbox" name="clus" id="cluster5" value="c5">
+                        Cluster 5
+                    </label>
+                    <label class="item10">
+                        <input type="checkbox" name="clus" id="cluster6" value="c6">
+                        Cluster 6
+                    </label>
+                </div>    
+                <div class="content formContainer">
+                    <label class="item10">
+                        <input type="checkbox" name="clus" id="cluster7" value="c7">
+                        Cluster 7
+                    </label>
+                    <label class="item10">
+                        <input type="checkbox" name="clus" id="cluster8" value="c8">
+                        Cluster 8
+                    </label>
+                    <label class="item10">
+                        <input type="checkbox" name="clus" id="cluster9" value="c9">
+                        Cluster 9
+                    </label>
+                    <label class="item10">
+                        <input type="checkbox" name="clus" id="cluster10" value="c10">
+                        Cluster 10
+                    </label>
+                    <label class="item10">
+                        <input type="checkbox" name="clus" id="cluster11" value="c11">
+                        Cluster 11
+                    </label>
+                    <label class="item10">
+                        <input type="checkbox" name="clus" id="cluster12" value="c12">
+                        Cluster 12
+                    </label>
+                    <label class="item10">
+                        <input type="checkbox" name="clus" id="cluster13" value="c13">
+                        Cluster 13
+                    </label>
+                    <label class="item10">
+                        <input type="checkbox"  name="clus" id="cluster14" value="c14">
+                        Cluster 14
+                    </label>
+                    <label class="item10">
+                        <input type="checkbox" name="clus" id="cluster15" value="c15">
+                        Cluster 15
+                    </label>
+                    <label class="item10">
+                        <input type="checkbox"  name="clus" id="cluster16" value="c16">
+                        Cluster 16
+                    </label>
+                    <label class="item10">
+                        <input type="checkbox" name="clus" id="cluster17" value="c17">
+                        Cluster 17
+                    </label>
+                    <label class="item10">
+                        <input type="checkbox" name="clus" id="cluster18" value="c18">
+                        Cluster 18
+                    </label>
+                    <label class="item10">
+                        <input type="checkbox" name="clus" id="cluster19" value="c19">
+                        Cluster 19
+                    </label>
+                </div>
+            </section>
+            <section class="menuBox">
+                <input class="collapseCheckbox" type="checkbox" name="collapse1" id="handle1" style="display:none">
+                <h2 class="handle">
+                    <label for="handle1">Animation & ScatterPoints</label>
+                </h2>
+                <div class="content formMainContainer">
+                    <button class="item40" onclick="loadanimate()" id="btn">Do Animation</button>
+                    <label class="item50">
+                        <input type="checkbox" name="animate" id="animate" value="animate">
+                        Animate
+                    </label>
+                </div>
+                <div class="content formMainContainer">
+                    <button class="item40" onclick="loadscatter()" id="btn">Do scatter</button>
+                    <label class="item50">
+                        <input type="checkbox" name="scatterpoints" id="scatterpoints" value="scatterpoints">
+                        Scatterpoints
+                    </label>
+                </div>
+            </section>
+        </div>
+    </div>
+</body>
+</html>
